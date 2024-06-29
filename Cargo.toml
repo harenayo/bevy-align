@@ -6,3 +6,10 @@ edition = "2021"
 [dependencies.bevy]
 version = "0.13.2"
 default-features = false
+
+[features]
+dev = ["bevy/default"]
+
+[[example]]
+name = "harmonic"
+required-features = ["bevy/default"]
