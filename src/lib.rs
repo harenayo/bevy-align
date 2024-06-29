@@ -25,8 +25,8 @@ use bevy::{
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug, Component)]
 pub struct Aligning {
-    target: Entity,
-    enabled: BVec3,
+    pub target: Entity,
+    pub enabled: BVec3,
 }
 
 impl Default for Aligning {
@@ -40,9 +40,9 @@ impl Default for Aligning {
 
 #[derive(Clone, Copy, PartialEq, Debug, Bundle)]
 pub struct AligningBundle {
-    aligning: Aligning,
-    transform: Transform,
-    global_transform: GlobalTransform,
+    pub aligning: Aligning,
+    pub transform: Transform,
+    pub global_transform: GlobalTransform,
 }
 
 pub fn align_entities(
