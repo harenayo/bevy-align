@@ -1,0 +1,8 @@
+[package]
+name = "bevy-align"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies.bevy]
+version = "0.13.2"
+default-features = false
