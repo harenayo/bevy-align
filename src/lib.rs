@@ -1,3 +1,11 @@
+//! A simple crate to align entities in [`bevy`].
+//!
+//! # Features
+//!
+//! feature | description
+//! - | -
+//! `dev` | Enable other features required by the examples.
+
 use bevy::{
     app::{
         App,
@@ -23,9 +31,13 @@ use bevy::{
     },
 };
 
+/// A component for aligning.
+/// An entity with this component should have [`Transform`].
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug, Component)]
 pub struct Aligning {
+    /// A target.
     pub target: Entity,
+    /// Whether or not each elements of [`Transform::translation`] is aligned.
     pub enabled: BVec3,
 }
 
@@ -38,6 +50,7 @@ impl Default for Aligning {
     }
 }
 
+/// A bundle for [`Aligning`].
 #[derive(Clone, Copy, PartialEq, Debug, Bundle)]
 pub struct AligningBundle {
     pub aligning: Aligning,
@@ -45,6 +58,7 @@ pub struct AligningBundle {
     pub global_transform: GlobalTransform,
 }
 
+/// Update [`Transform`] of entities with [`Aligning`].
 pub fn align_entities(
     mut entities: Query<(&Aligning, &mut Transform, Option<&Parent>)>,
     global_transforms: Query<&GlobalTransform>,
@@ -81,6 +95,8 @@ pub fn align_entities(
         })
 }
 
+/// A plugin for [`Aligning`].
+/// This plugin just add [`align_entities`].
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Default, Debug)]
 pub struct AlignPlugin;
 
